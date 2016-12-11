@@ -1,0 +1,10 @@
+<p>Here is your employee</p>
+
+<p><%=  @employee.first_name %></p>
+<p><%=  @employee.last_name %></p>
+<p><%=  @employee.dob %></p>
+<p><%=  @employee.company_email %></p>
+<p><%=  @employee.ssn %></p>
+
+
+<%= link_to "Delete this here", "/employees/#{@employee.id}", method: :delete %>
