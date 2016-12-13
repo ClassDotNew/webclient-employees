@@ -12,7 +12,7 @@ class Employee
   end
 
   def self.find(input_id)
-    employee_hash = Unirest.get("http://localhost:3000/api/v1/employees/#{input_id}").body
+    employee_hash = Unirest.get("http://localhost:3000/api/v1/employees/#{input_id}", headers:{ "Accept" => "application/json", "Authorization" => 'Token token=imsocool', 'X-User-Email' => 'fakeemail' }).body
     employee = Employee.new(
       first_name: employee_hash['first_name'],
       last_name: employee_hash['last_name'],
@@ -47,7 +47,7 @@ class Employee
 
   def self.create(input_hash)
     employee_hash = Unirest.post("http://localhost:3000/api/v1/employees",
-                  headers:{ "Accept" => "application/json" },
+                  headers:{ "Accept" => "application/json", "Authorization" => 'Token token=imsocool', 'X-User-Email' => 'fakeemail' },
                   parameters:{ :first_name => input_hash[:first_name], :last_name => input_hash[:last_name] }
                 ).body
     return Employee.new(id: employee_hash['id'],
